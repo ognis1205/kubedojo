@@ -19,8 +19,8 @@ spec:
       command: ["sh", "-c"]
       args:
         - |
-          trap 'echo "Trapped SIGTERM"; sleep 3; echo "See you!!"; exit 0' TERM
-          echo Start.
+          trap 'echo "Trapped SIGTERM"; sleep 3; echo "See you"; exit 0' TERM
+          echo "Start at `date`"
           while true
           do
             date
@@ -33,7 +33,7 @@ spec:
               - sh
               - -c
               - |
-                echo hook postStart.
+                echo "hook postStart"
                 date
                 exit 0
         preStop:
@@ -42,7 +42,7 @@ spec:
               - sh
               - -c
               - |
-                echo hook preStop.
+                echo "hook preStop"
                 date
                 exit 0
   restartPolicy: Never
